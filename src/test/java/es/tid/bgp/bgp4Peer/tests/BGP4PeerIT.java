@@ -66,7 +66,7 @@ public class BGP4PeerIT {
 		bgpPeer2.startManagementServer();
 		bgpPeer2.startSendTopology();
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,10 +102,8 @@ public class BGP4PeerIT {
 		}*/
 		for(String key : keySet){
 			assertTrue("Checking if topos, IntraTEDBs, have the same domains", keySet.contains(key));
-			//assertTrue("Checking if topos, IntraTEDB (domain="+key+") are equal", bgpPeer.getIntraTEDBs().get(key).equals(bgpPeer2.getIntraTEDBs().get(key)));
-			assertTrue("->Checking if topos are equals, IntraTEDB (domains="+key+") are not equal:\nTED1:\n"+bgpPeer.getIntraTEDBs().get(key).printTopology()+"\nTED2:\n"+bgpPeer.getIntraTEDBs().get(key).printTopology(), bgpPeer.getIntraTEDBs().get(key).equals(bgpPeer2.getIntraTEDBs().get(key)));
+			assertTrue("Checking if topos, IntraTEDB (domain="+key+") are equal", bgpPeer.getIntraTEDBs().get(key).equals(bgpPeer2.getIntraTEDBs().get(key)));
 		}
-		
 		assertTrue("Checking if topos are equal",topoOriginal.equals(topo2));
 		} catch (Exception exc){
 			exc.printStackTrace();
