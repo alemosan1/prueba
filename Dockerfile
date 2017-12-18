@@ -17,4 +17,5 @@ RUN mvn package -P bgp-ls-speaker assembly:single -X -f /usr/src/app/pom.xml
 RUN mv /usr/src/app/target/bgp-ls-speaker-jar-with-dependencies.jar /usr/src/app/target/BGPPeer.jar
 RUN cp -r /usr/src/app/src/test/resources/ /usr/src/app/examplesConf/
 WORKDIR /usr/src/app/
+EXPOSE 8087 8088 8089
 
