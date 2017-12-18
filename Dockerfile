@@ -12,8 +12,10 @@ RUN sudo apt-get -y install maven
 #copy code files
 COPY . /usr/src/app
 
+WORKDIR /usr/src/app/
 #compile
-RUN mvn clean package -P generate-full-jar /usr/src/app/pom.xml
+
+RUN mvn clean package -P generate-full-jar 
 #RUN mv /usr/src/app/target/bgp-ls-speaker-jar-with-dependencies.jar /usr/src/app/target/BGPPeer.jar
 #RUN cp -r /usr/src/app/src/test/resources/ /usr/src/app/examplesConf/
 WORKDIR /usr/src/app/
