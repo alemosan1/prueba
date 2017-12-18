@@ -1,9 +1,10 @@
 language: java
 jdk:
-  - oraclejdk7
   - oraclejdk8
 services:
   - docker
+before_install:
+   -export JAVA_HOME=/
 install:
   - sudo docker build -t bgppeer . 
   - docker_host=$(ifconfig docker0 | grep 'inet' | cut -d ':' -f2 | awk '{ print $1}')
