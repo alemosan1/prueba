@@ -15,3 +15,6 @@ script:
   - sudo docker run -d -p 8088:8088 --add-host docker_host:$docker_host -t --name bgppeer2 bgppeer java -jar target/topology-SNAPSHOT-shaded.jar src/app/target//conf1wayTest/TM2.xml
   - sudo docker run -d -p 8089:8089 --add-host docker_host:$docker_host -t --name bgppeer3 bgppeer java -jar target/topology-SNAPSHOT-shaded.jar src/app/target/conf1wayTest/TM1.xml
   - mvn compile failsafe:integration-test
+  - nc -z -v -w5 $docker_host 8087
+  - nc -z -v -w5 $docker_host 8088
+  - nc -z -v -w5 $docker_host 8089
