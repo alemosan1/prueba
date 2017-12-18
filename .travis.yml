@@ -11,5 +11,7 @@ install:
 script:
   - mvn install -X -f ./pom.xml
   - mvn -P generate-javadoc org.apache.maven.plugins:maven-javadoc-plugin:2.9.1:jar
-  - sudo docker run -d -p 11179:11179 --add-host docker_host:$docker_host -t --name bgppeer1 bgppeer java -jar target/BGPPeer.jar src/test/resources/BGP4Parameters_1_IT.xml
+  - sudo docker run -d -p 8087:8087 --add-host docker_host:$docker_host -t --name bgppeer1 bgppeer java -jar /usr/src/app/target/topology-SNAPSHOT-shaded.jar src/app/target/conf1wayTest/TM1.xml
+  - sudo docker run -d -p 8088:8088 --add-host docker_host:$docker_host -t --name bgppeer2 bgppeer java -jar target/topology-SNAPSHOT-shaded.jar src/app/target//conf1wayTest/TM2.xml
+  - sudo docker run -d -p 8089:8089 --add-host docker_host:$docker_host -t --name bgppeer3 bgppeer java -jar target/topology-SNAPSHOT-shaded.jar src/app/target/conf1wayTest/TM1.xml
   - mvn compile failsafe:integration-test
