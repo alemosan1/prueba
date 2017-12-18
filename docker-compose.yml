@@ -1,0 +1,11 @@
+bgp1:
+  image: bgp1:latest
+  command: sh -c '
+  ports:
+   -'8087:8087'
+
+bgp2:
+  image: bgp1:latest
+  command: sh -c '
+  ports:
+   -'8087:8087'
