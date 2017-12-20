@@ -11,9 +11,9 @@ install:
 script:
   - mvn install -X -f ./pom.xml
   - mvn -P generate-javadoc org.apache.maven.plugins:maven-javadoc-plugin:2.9.1:jar
-  - sudo docker run -d -p 8087:8087 --add-host docker_host:$docker_host -t --name bgppeer1 bgppeer java -jar /usr/src/app/target/topology-1.3.3-shaded.jar src/app/target/conf1wayTest/TM1.xml
-  - sudo docker run -d -p 8088:8088 --add-host docker_host:$docker_host -t --name bgppeer2 bgppeer java -jar /usr/src/app/target/topology-1.3.3-shaded.jar src/app/target/conf1wayTest/TM2.xml
-  - sudo docker run -d -p 8089:8089 --add-host docker_host:$docker_host -t --name bgppeer3 bgppeer java -jar target/topology-1.3.3-shaded.jar src/app/target/conf1wayTest/TM1.xml
+  - sudo docker run -d -p 8087:8087 --add-host docker_host:$docker_host -t --name bgppeer1 bgppeer java -jar target/topology-1.3.3-shaded.jar target/conf1wayTest/TM1.xml
+  - sudo docker run -d -p 8088:8088 --add-host docker_host:$docker_host -t --name bgppeer2 bgppeer java -jartarget/topology-1.3.3-shaded.jar target/conf1wayTest/TM2.xml
+  - sudo docker run -d -p 8089:8089 --add-host docker_host:$docker_host -t --name bgppeer3 bgppeer java -jar target/topology-1.3.3-shaded.jar   target/conf1wayTest/TM1.xml
   - nc -z -v -w5 $docker_host 8087
   - nc -z -v -w5 $docker_host 8088
   - nc -z -v -w5 $docker_host 8089
